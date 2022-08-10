@@ -38,6 +38,7 @@ export default function Home() {
                   controls
                   width="100%"
                   src={cld.video(video.id).delivery('q_auto').format('auto').toURL()}
+                  poster={cld.image(video.id).setAssetType('video').delivery('q_auto').format('auto:image').toURL() }
                 />
 
                 <h3 className={styles.videoTitle}>
