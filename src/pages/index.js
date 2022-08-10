@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import Head from 'next/head'
+import { Cloudinary } from '@cloudinary/url-gen';
 
 import Layout from '@components/Layout';
 import Container from '@components/Container';
@@ -8,6 +9,12 @@ import Button from '@components/Button';
 import videos from '@data/videos';
 
 import styles from '@styles/Home.module.scss'
+
+const cld = new Cloudinary({
+  cloud: {
+    cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
+  }
+});
 
 export default function Home() {
   return (
