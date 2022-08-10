@@ -1,0 +1,19 @@
+@import "@styles/settings/__settings";
+
+.header {
+  font-size: 2em;
+}
+
+.videos {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 3em;
+}
+
+.videoTitle {
+  font-size: 1.4em;
+  margin: .4em 0 0;
+}
