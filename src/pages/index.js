@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import Head from 'next/head'
 import { Cloudinary } from '@cloudinary/url-gen';
 
+
 import Layout from '@components/Layout';
 import Container from '@components/Container';
 import Button from '@components/Button';
@@ -33,11 +34,10 @@ export default function Home() {
           {videos.map(video => {
             return (
               <li key={video.id}>
-
                 <video
                   controls
                   width="100%"
-                  src={`/videos/${video.id}.${video.format}`}
+                  src={cld.video(video.id).delivery('q_auto').format('auto').toURL()}
                 />
 
                 <h3 className={styles.videoTitle}>
