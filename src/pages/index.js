@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Head from 'next/head'
 import { Cloudinary } from '@cloudinary/url-gen';
+import { AdvancedVideo, lazyload } from '@cloudinary/react';
 
 
 import Layout from '@components/Layout';
@@ -34,11 +35,12 @@ export default function Home() {
           {videos.map(video => {
             return (
               <li key={video.id}>
-                <video
+                <AdvancedVideo
                   controls
                   width="100%"
-                  src={cld.video(video.id).delivery('q_auto').format('auto').toURL()}
+                  cldVid={cld.video(video.id).delivery('q_auto').format('auto')}
                   poster={cld.image(video.id).setAssetType('video').delivery('q_auto').format('auto:image').toURL() }
+                  plugins={[lazyload()]}
                 />
 
                 <h3 className={styles.videoTitle}>
