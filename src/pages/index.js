@@ -53,7 +53,7 @@ export default function Home() {
                   loop
                   muted
                   width="100%"
-                  cldVid={cld.video(video.id).delivery('q_auto').format('auto')}
+                  cldVid={cld.video(video.id).effect('e_preview:duration_4').delivery('q_auto').format('auto')}
                   plugins={[lazyload()]}
                 />
 
