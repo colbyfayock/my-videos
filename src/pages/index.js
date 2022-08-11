@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Head from 'next/head'
 import { Cloudinary } from '@cloudinary/url-gen';
-import { AdvancedVideo, lazyload } from '@cloudinary/react';
+import { AdvancedImage, AdvancedVideo, lazyload } from '@cloudinary/react';
 
 
 import Layout from '@components/Layout';
@@ -33,13 +33,27 @@ export default function Home() {
 
         <ul className={styles.videos}>
           {videos.map(video => {
+            const playerRef = useRef();
+
+            function onMouseOver() {
+              playerRef.current.videoRef.current.play();
+            }
+
+            function onMouseOut() {
+              playerRef.current.videoRef.current.pause();
+            }
+
             return (
-              <li key={video.id}>
+              <li className={styles.video} key={video.id} onMouseOver={onMouseOver} onMouseOut={onMouseOut}>
+                <AdvancedImage
+                  cldImg={cld.image(video.id).setAssetType('video').delivery('q_auto').format('auto:image')}
+                />
                 <AdvancedVideo
-                  controls
+                  ref={playerRef}
+                  loop
+                  muted
                   width="100%"
                   cldVid={cld.video(video.id).delivery('q_auto').format('auto')}
-                  poster={cld.image(video.id).setAssetType('video').delivery('q_auto').format('auto:image').toURL() }
                   plugins={[lazyload()]}
                 />
 

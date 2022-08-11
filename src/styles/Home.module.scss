@@ -17,3 +17,33 @@
   font-size: 1.4em;
   margin: .4em 0 0;
 }
+
+.video {
+
+  position: relative;
+
+  img {
+    position: relative;
+    z-index: 1;
+  }
+
+  video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    z-index: 0;
+    width: 100%;
+    height: auto;
+  }
+
+  &:hover {
+
+    video {
+      z-index: 2;
+      opacity: 1;
+    }
+
+  }
+
+}
